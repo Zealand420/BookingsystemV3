@@ -1,0 +1,110 @@
+:root {
+    --custom-primarybutton: #007BFF;
+    --custom-buttonhover: #0056B3;
+    --custom-whitebackground: #F5F6FA;
+    --custom-overskrift: #343A40;
+    --custom-tekst: #6C757D;
+    --custom-highlighttekst: #007BFF; 
+    --custom-handlingsikoner: #007BFF; 
+    --custom-ledigetider: #D4EDDA; 
+    --custom-optaget: #F8D7DA;
+    --custom-optagetdarkred: #D91E2F;
+    --custom-kalenderlinjer: #D6E9F9; 
+    --custom-hvidtekst: #FFFFFF;
+    --custom-verticalnavbar: #0056B3;
+    --custom-navbaraktiv: #0056B3;
+    --custom-hovernabar: #007BFF;
+    --custom-navbartekst: #6C757D;
+    --custom-elementerbaggrund: #FFFFFF; 
+    --custom-ledig: #28A745; 
+    --custom-totalhvid: #FFFFFF; 
+  }
+
+  body {
+    background-color: #F5F6FA; /* Replace with your desired color */
+    margin: 0; /* Ensure no extra spacing around the body */
+  }
+
+  .text-custom-primary{
+    color: var(--custom-tekst);
+    font-size: 16px;
+  }
+
+  .text-custom-secondary{
+    color: var(--custom-tekst);
+    font-size: 14px;
+  }
+
+  .text-custom-navbar{
+    color: var(--custom-tekst);
+    font-size: 18px;
+  }
+
+  .text-custom-H1{
+    color: var(--custom-overskrift);
+    font-size: 32px;
+  }
+
+  .text-custom-H2{
+    color: var(--custom-overskrift);
+    font-size: 24px;
+  }
+
+  .text-custom-H3{
+    color: var(--custom-overskrift);
+    font-size: 20px;
+  }
+
+  .text-custom-primaryCTA{
+    color: var(--custom-overskrift);
+    font-size: 16px;
+  }
+
+  .text-custom-secondaryCTA{
+    color: var(--custom-overskrift);
+    font-size: 14px;
+  }
+
+  .overview-admin {
+  padding: 20px;
+  background-color: var(--custom-whitebackground);
+}
+
+.search-bar input {
+  width: 100%;
+  max-width: 400px;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid var(--custom-kalenderlinjer);
+  border-radius: 5px;
+}
+
+.admin-links .btn {
+  margin-right: 10px;
+}
+
+.square {
+  cursor: pointer;  /* Change cursor to pointer on hover */
+  background-color: #f8f9fa;  /* Background color */
+  border: 1px solid #ddd;  /* Border to define the square */
+  border-radius: 5px;  /* Rounded corners */
+  padding: 20px;
+  transition: all 0.3s ease;  /* Smooth transition for hover effect */
+}
+
+.square:hover {
+  background-color: #e9ecef;  /* Hover effect */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);  /* Slight shadow effect on hover */
+}
+
+.square.disabled {
+  background-color: #f1f3f5;
+  cursor: not-allowed;  /* Disable pointer when it's not clickable */
+  color: #6c757d;  /* Greyed-out text for disabled state */
+}
+
+
+
+
+
+  
