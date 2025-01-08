@@ -17,7 +17,11 @@
     --custom-navbartekst: #6C757D;
     --custom-elementerbaggrund: #FFFFFF; 
     --custom-ledig: #28A745; 
-    --custom-totalhvid: #FFFFFF; 
+    --custom-totalhvid: #FFFFFF;
+    --custom-headertekst: #343A40;
+    --custom-hvidtekstknap: #FFFFFF; 
+
+
   }
 
   body {
@@ -38,6 +42,11 @@
   .text-custom-navbar{
     color: var(--custom-tekst);
     font-size: 18px;
+  }
+
+  .text-custom-headertekst{
+    color: var(--custom-headertekst);
+    font-size: 16px;
   }
 
   .text-custom-H1{
@@ -63,6 +72,11 @@
   .text-custom-secondaryCTA{
     color: var(--custom-overskrift);
     font-size: 14px;
+  }
+
+  .text-custom-primaryCTAhvid{
+    color: var(--custom-hvidtekstknap);
+    font-size: 16px;
   }
 
   .overview-admin {
@@ -102,6 +116,18 @@
   cursor: not-allowed;  /* Disable pointer when it's not clickable */
   color: #6c757d;  /* Greyed-out text for disabled state */
 }
+
+/* In your CSS file or in a style block */
+.custom-rounded {
+  border-radius: 15px !important;  /* Adjust the px value to make it more rounded */
+}
+
+/* Hide the dropdown arrow */
+.dropdown-toggle::after {
+  display: none !important;
+}
+
+
 
 
 
