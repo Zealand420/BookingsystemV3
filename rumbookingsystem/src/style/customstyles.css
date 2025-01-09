@@ -127,6 +127,64 @@
   display: none !important;
 }
 
+/* Modal i kalenderen */
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: 100px repeat(7, 1fr);
+  gap: 1px;
+}
+
+.calendar-header {
+  display: contents;
+}
+
+.day-column {
+  background: #f8f9fa;
+  text-align: center;
+  padding: 10px;
+  font-weight: bold;
+}
+
+.time-row {
+  display: grid;
+  grid-template-columns: 100px repeat(7, 1fr);
+  border-bottom: 1px solid #ddd;
+}
+
+.time-label {
+  background: #f8f9fa;
+  padding: 10px;
+  text-align: center;
+  border-right: 1px solid #ddd;
+}
+
+.calendar-cell {
+  border-right: 1px solid #ddd;
+  background: #fff;
+  height: 50px;
+  cursor: pointer;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-box {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  width: 400px;
+  max-width: 90%;
+}
 
 
 

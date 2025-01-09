@@ -13,6 +13,21 @@ const AddRoom = () => {
   const [Description, setDescription] = useState("");
 
   // Function to handle form submission
+  /*const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await addDoc(collection(db, "Facilities"), {
+        RoomName,
+        Type,
+        Status,
+        Description,
+      });
+      navigate("/facilities"); // Redirect to facilities page after submission
+    } catch (error) {
+      console.error("Error adding room: ", error);
+    }
+  };*/
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -21,6 +36,16 @@ const AddRoom = () => {
         Type,
         Status,
         Description,
+        Calendar: {
+          EndDate: "",
+          EndTime: "",
+          FootBallClub: "",
+          Opponent: "",
+          ReservationDescription: "",
+          StartDate: "",
+          StartTime: "",
+          TitelReservation: "",
+        },
       });
       navigate("/facilities"); // Redirect to facilities page after submission
     } catch (error) {

@@ -11,6 +11,8 @@ import Kitchen from './pages/Kitchen.js';  // Correctly import Kitchen
 import Changingroom from './pages/Changingroom.js';
 import Fitnessroom from './pages/Fitnessroom.js';
 import RoomsandCafe from './pages/RoomsandCafe.js';
+import Calendar from './pages/Calendar.js';
+
 
 function App() {
   return (
@@ -25,6 +27,7 @@ function App() {
         <Route path="/fitness-room" element={<Fitnessroom />} />
         <Route path="/rooms-and-cafe" element={<RoomsandCafe />} />
         <Route path="/changing-room" element={<Changingroom />} />
+        <Route path="/calendar" element={<Calendar />} />
       </Routes>
     </Router>
   );

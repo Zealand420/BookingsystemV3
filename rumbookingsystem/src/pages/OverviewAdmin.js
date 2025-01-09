@@ -51,7 +51,7 @@ const OverviewAdmin = () => {
         <div className="col-2"></div>
 
         {/* Column 2 to 5: 4 Squares */}
-        <Link to="/roomsandcafe" className="col-2 text-center square ms-2 me-2" style={{ textDecoration: 'none' }}>
+        <Link to="/rooms-and-cafe" className="col-2 text-center square ms-2 me-2" style={{ textDecoration: 'none' }}>
           <i className="fa-solid fa-person-shelter fa-3x text-secondary mt-3"></i>
           <h5 className='text-custom-navbar mt-1'>Lokaler & Cafe</h5>
         </Link>
