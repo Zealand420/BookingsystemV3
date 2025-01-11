@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { db } from "../firebaseConfig";
-import { collection, addDoc, getDocs, query } from "firebase/firestore";
+import { doc, getDoc, collection, addDoc, getDocs, query } from "firebase/firestore";
 import { useParams } from "react-router-dom";
 
 function Calendar() {
@@ -8,6 +8,7 @@ function Calendar() {
 
   const [currentWeek, setCurrentWeek] = useState([]);
   const [reservations, setReservations] = useState([]);
+  const [roomName, setRoomName] = useState(""); // State to store room name
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   // Modal Form States
@@ -21,6 +22,19 @@ function Calendar() {
   const [reservationDescription, setReservationDescription] = useState("");
 
   const daysInDanish = ["Mandag", "Tirsdag", "Onsdag", "Torsdag", "Fredag", "Lørdag", "Søndag"];
+
+  const fetchRoomDetails = async () => {
+    try {
+      const roomDoc = await getDoc(doc(db, "Facilities", roomId));
+      if (roomDoc.exists()) {
+        setRoomName(roomDoc.data().RoomName); // Set room name
+      } else {
+        console.error("Room not found");
+      }
+    } catch (error) {
+      console.error("Error fetching room details: ", error);
+    }
+  };
 
   const fetchReservations = async () => {
     try {
@@ -46,6 +60,7 @@ function Calendar() {
     });
     setCurrentWeek(week);
     fetchReservations();
+    fetchRoomDetails(); // Fetch room details on mount
   }, [roomId]);
 
   const changeWeek = (direction) => {
@@ -100,45 +115,32 @@ function Calendar() {
         <div className="col-9">
           <div className="row align-items-center py-3 ms-2">
             <div className="col-6">
-              <h1>{roomId}</h1>
+              <h1 className="text-custom-H1 fw-bold">{roomName}</h1>
             </div>
             <div className="col-6 text-end">
               <div className="input-group" style={{ width: "250px", display: "inline-flex" }}>
                 <span className="input-group-text">
                   <i className="fas fa-search"></i>
                 </span>
-                <input
-                  type="text"
-                  className="form-control"
-                  placeholder="Søg..."
-                />
+                <input type="text" className="form-control" placeholder="Søg..." />
               </div>
-              <i className="fas fa-bell fa-xl me-3"></i>
+              <i className="fas fa-bell fa-xl me-3 ms-3"></i>
             </div>
           </div>
           <div className="row align-items-center py-3 ms-2 me-2">
             <div className="col-6 d-flex align-items-center">
-              <button
-                className="btn btn-link me-2 p-0 text-decoration-none"
-                onClick={() => changeWeek(-1)}
-              >
+              <button className="btn btn-link me-2 p-0 text-decoration-none" onClick={() => changeWeek(-1)}>
                 &lt;
               </button>
               <span>
                 {currentWeek[0]?.toLocaleDateString()} - {currentWeek[6]?.toLocaleDateString()}
               </span>
-              <button
-                className="btn btn-link ms-2 p-0 text-decoration-none"
-                onClick={() => changeWeek(1)}
-              >
+              <button className="btn btn-link ms-2 p-0 text-decoration-none" onClick={() => changeWeek(1)}>
                 &gt;
               </button>
             </div>
             <div className="col-6 text-end">
-              <button
-                className="btn btn-primary fw-bold"
-                onClick={() => setIsModalOpen(true)}
-              >
+              <button className="btn btn-primary fw-bold" onClick={() => setIsModalOpen(true)}>
                 <i className="fas fa-calendar me-2"></i> Reserver
               </button>
             </div>
@@ -184,19 +186,20 @@ function Calendar() {
           </div>
 
           {isModalOpen && (
-  <div className="modal-overlay">
-    <div className="modal-box bg-white p-4 rounded" style={{ width: "750px" }}>
-      <h2>Reserver tid - {roomId}</h2>
-      <form>
-        <div className="form-group mb-3">
-          <label>Title</label>
-          <input
-            type="text"
-            className="form-control"
-            value={TitelReservation}
-            onChange={(e) => setTitelReservation(e.target.value)}
-          />
-        </div>
+            <div className="modal-overlay">
+              <div className="modal-box bg-white p-4 rounded" style={{ width: "750px" }}>
+                <h2>Reserver tid - {roomName || "Loading..."}</h2>
+                <form>
+                  {/* Modal fields */}
+                  <div className="form-group mb-3">
+                    <label>Title</label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      value={TitelReservation}
+                      onChange={(e) => setTitelReservation(e.target.value)}
+                    />
+                  </div>
         <div className="row mb-3">
           <div className="col-6">
             <label>Start Time</label>
@@ -271,29 +274,29 @@ function Calendar() {
           ></textarea>
         </div>
         <div className="row">
-          <div className="col-6">
-            <button
-              type="button"
-              className="btn btn-secondary w-100"
-              onClick={() => setIsModalOpen(false)}
-            >
-              Cancel
-            </button>
-          </div>
-          <div className="col-6">
-            <button
-              type="button"
-              className="btn btn-primary w-100"
-              onClick={handleReservationSubmit}
-            >
-              Submit
-            </button>
-          </div>
-        </div>
-      </form>
-    </div>
-  </div>
-)}
+                    <div className="col-6">
+                      <button
+                        type="button"
+                        className="btn btn-secondary w-100"
+                        onClick={() => setIsModalOpen(false)}
+                      >
+                        Cancel
+                      </button>
+                    </div>
+                    <div className="col-6">
+                      <button
+                        type="button"
+                        className="btn btn-primary w-100"
+                        onClick={handleReservationSubmit}
+                      >
+                        Submit
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>

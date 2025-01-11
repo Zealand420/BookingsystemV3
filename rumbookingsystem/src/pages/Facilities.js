@@ -2,6 +2,8 @@ import { collection, getDocs } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { db } from "../firebaseConfig";
 import { Link } from 'react-router-dom';  // Import Link for navigation
+import AdminVerticalNavbar from "../components/AdminVerticalNavbar"; // Adjust the path as necessary
+
 
 function FacilitiesPage() {
   const [facilities, setFacilities] = useState([]);
@@ -29,7 +31,7 @@ function FacilitiesPage() {
       <div className="row">
         {/* Vertical Navbar */}
         <div className="col-3 bg-light border-end" style={{ minHeight: "100vh" }}>
-          {/* Add Navbar Content */}
+        <AdminVerticalNavbar userId="USER_ID_HERE" />
         </div>
 
         <div className="col-9">
@@ -59,12 +61,12 @@ function FacilitiesPage() {
             </div>
             <div className="col-8 d-flex justify-content-end align-items-center">
               <span className="me-3 fw-bold text-custom-H3">Sorter efter:</span>
-              <select className="form-select me-3 custom-rounded fw-bold text-custom-primary pt-3 pb-3 pe-3 ps-3" style={{ width: "150px" }}>
+              <select className="form-select me-3 custom-rounded fw-bold text-custom-primaryCTA pt-3 pb-3 pe-3 ps-3" style={{ width: "150px" }}>
                 <option>Status</option>
                 <option>Ledig</option>
                 <option>Optaget</option>
               </select>
-              <select className="form-select me-3 custom-rounded fw-bold text-custom-primary pt-3 pb-3 pe-3 ps-3" style={{ width: "150px" }}>
+              <select className="form-select me-3 custom-rounded fw-bold text-custom-primaryCTA pt-3 pb-3 pe-3 ps-3" style={{ width: "150px" }}>
                 <option>Type</option>
                 <option>Mødelokale</option>
                 <option>Taktikrum</option>

@@ -11,7 +11,9 @@ import Kitchen from './pages/Kitchen.js';  // Correctly import Kitchen
 import Changingroom from './pages/Changingroom.js';
 import Fitnessroom from './pages/Fitnessroom.js';
 import RoomsandCafe from './pages/RoomsandCafe.js';
-import Calendar from './pages/Calendar.js';
+import Calendar from './components/Calendar.js';
+import EditMember from './pages/EditMember.js';
+
 
 
 function App() {
@@ -28,7 +30,9 @@ function App() {
         <Route path="/rooms-and-cafe" element={<RoomsandCafe />} />
         <Route path="/changing-room" element={<Changingroom />} />
         <Route path="/calendar" element={<Calendar />} />
-      </Routes>
+        <Route path="/calendar/:roomId" element={<Calendar />} /> {/* Dynamic route */}
+        <Route path="/edit-member/:id" element={<EditMember />} />
+        </Routes>
     </Router>
   );
 }
