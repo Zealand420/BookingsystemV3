@@ -264,7 +264,7 @@ const EditMember = () => {
                 <div className="row mt-3">
                   <div className="col-6">
                     <button
-                      className="btn btn-secondary"
+                      className="btn btn-secondary border border-secondary btn-hover-custom pt-3 pb-3 pe-3 ps-3 fw-bold float-end"
                       style={{ width: "50%" }}
                       onClick={() => navigate("/members")}
                     >
@@ -273,7 +273,7 @@ const EditMember = () => {
                   </div>
                   <div className="col-6">
                     <button
-                      className="btn btn-primary"
+                      className="btn btn-primary pt-3 pb-3 pe-3 ps-3 fw-bold"
                       style={{ width: "50%" }}
                       onClick={handleSubmit}
                     >

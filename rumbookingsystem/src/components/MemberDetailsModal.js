@@ -12,12 +12,12 @@ function MemberDetailsModal({ show, onClose, member }) {
           <button className="close-button2" onClick={onClose}>
             <i className="fas fa-times mt-2"></i> {/* "X" icon */}
           </button>
-          <h2>Medlemsdetaljer</h2>
+          <h2 className='text-custom-H2'>Medlemsdetaljer</h2>
           <div className="modal-body2">
-            <p><strong>Navn:</strong> {member.FirstName} {member.LastName}</p>
-            <p><strong>Telefon nr.:</strong> {member.PhoneNumber}</p>
-            <p><strong>Klub:</strong> {member.FootballClub}</p>
-            <p><strong>Rolle:</strong> {member.Role}</p>
+            <p className='text-custom-primaryCTA'><strong>Navn:</strong> {member.FirstName} {member.LastName}</p>
+            <p className='text-custom-primaryCTA'><strong>Telefon nr.:</strong> {member.PhoneNumber}</p>
+            <p className='text-custom-primaryCTA'><strong>Klub:</strong> {member.FootballClub}</p>
+            <p className='text-custom-primaryCTA'><strong>Rolle:</strong> {member.Role}</p>
             {/* Add other member details here */}
           </div>
         </div>

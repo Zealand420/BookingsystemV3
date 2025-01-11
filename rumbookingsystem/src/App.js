@@ -13,6 +13,8 @@ import Fitnessroom from './pages/Fitnessroom.js';
 import RoomsandCafe from './pages/RoomsandCafe.js';
 import Calendar from './components/Calendar.js';
 import EditMember from './pages/EditMember.js';
+import EditFacility from './pages/EditFacility.js';
+
 
 
 
@@ -32,6 +34,8 @@ function App() {
         <Route path="/calendar" element={<Calendar />} />
         <Route path="/calendar/:roomId" element={<Calendar />} /> {/* Dynamic route */}
         <Route path="/edit-member/:id" element={<EditMember />} />
+        <Route path="/edit-facility/:id" Component={EditFacility} />
+
         </Routes>
     </Router>
   );

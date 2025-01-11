@@ -20,6 +20,7 @@
     --custom-totalhvid: #FFFFFF;
     --custom-headertekst: #343A40;
     --custom-hvidtekstknap: #FFFFFF; 
+    --custom-primaryCTA: #343A40; /* Example value for primary CTA */
 
 
   }
@@ -276,7 +277,7 @@ ul ul {
 /* Styles for modal container inside col-9 */
 .modal-container2 {
   position: relative; /* Relative to col-9 container */
-  width: 100%; /* Full width of the col-9 */
+  width: 40%; /* Full width of the col-9 */
   height: 100%; /* Full height of the col-9 */
   display: flex;
   justify-content: center;
@@ -308,6 +309,19 @@ ul ul {
 .modal-body2 {
   margin-top: 20px;
 }
+
+.btn-hover-custom {
+  background-color: white; /* Default background */
+  color: var(--custom-primaryCTA); /* Default text color */
+  border: 1px solid var(--bs-secondary); /* Default border color */
+}
+
+.btn-hover-custom:hover {
+  background-color: var(--custom-navbartekst); /* Custom background on hover */
+  color: #fdfdfd; /* White text on hover */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
+}
+
 
 
 

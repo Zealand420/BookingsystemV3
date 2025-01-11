@@ -112,7 +112,7 @@ const AddMember = () => {
                 </div>
 
                 {/* Row 2: Email and Phone Number */}
-                <div className="row mt-3">
+                <div className="row mt-4">
                   <div className="col-6">
                     <div className="input-group">
                       <span className="input-group-text">
@@ -144,10 +144,10 @@ const AddMember = () => {
                 </div>
 
                 {/* Row 3: Football Club */}
-                <div className="row mt-3">
+                <div className="row mt-4">
                   <div className="col-6">
                     <select
-                      className="form-select"
+                      className="form-select text-custom-primary"
                       value={FootballClub}
                       onChange={(e) => setFootballClub(e.target.value)}
                     >
@@ -161,10 +161,10 @@ const AddMember = () => {
                 </div>
 
                 {/* Row 4: Role and Room Access */}
-                <div className="row mt-3">
+                <div className="row mt-4">
                   <div className="col-6">
                     <select
-                      className="form-select"
+                      className="form-select text-custom-primary"
                       value={Role}
                       onChange={(e) => setRole(e.target.value)}
                     >
@@ -237,19 +237,20 @@ const AddMember = () => {
                 </div>
 
                 {/* Row 5: Buttons */}
-                <div className="row mt-3">
+                <div className="row mt-5">
                   <div className="col-6">
-                    <button
-                      className="btn btn-secondary"
-                      style={{ width: "50%" }}
-                      onClick={() => navigate("/members")}
-                    >
-                      Tilbage til medlemmer
-                    </button>
+                  <button
+                    className="btn btn-secondary border border-secondary btn-hover-custom pt-3 pb-3 pe-3 ps-3 fw-bold float-end"
+                    style={{ width: "50%" }}
+                    onClick={() => navigate("/members")}
+                  >
+                    Tilbage til medlemmer
+                </button>
+
                   </div>
                   <div className="col-6">
                     <button
-                      className="btn btn-primary"
+                      className="btn btn-primary pt-3 pb-3 pe-3 ps-3 fw-bold"
                       style={{ width: "50%" }}
                       onClick={handleSubmit}
                     >
