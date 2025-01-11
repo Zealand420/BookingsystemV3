@@ -3,15 +3,14 @@ import { useEffect, useState } from "react";
 import { db } from "../firebaseConfig";
 import { Link } from 'react-router-dom';
 import AdminVerticalNavbar from "../components/AdminVerticalNavbar";
-import MemberDetailsModal from "../components/MemberDetailsModal"; // Import the modal component
-
+import MemberDetailsModal from "../components/MemberDetailsModal"; 
 function MembersPage() {
   const [members, setMembers] = useState([]);
-  const [filteredMembers, setFilteredMembers] = useState([]); // State for filtered members
-  const [selectedClub, setSelectedClub] = useState(""); // State for selected club
-  const [selectedRole, setSelectedRole] = useState(""); // State for selected role
-  const [selectedMember, setSelectedMember] = useState(null); // State for the selected member
-  const [isModalOpen, setIsModalOpen] = useState(false); // State to control modal visibility
+  const [filteredMembers, setFilteredMembers] = useState([]);
+  const [selectedClub, setSelectedClub] = useState(""); 
+  const [selectedRole, setSelectedRole] = useState(""); 
+  const [selectedMember, setSelectedMember] = useState(null); 
+  const [isModalOpen, setIsModalOpen] = useState(false); 
 
   useEffect(() => {
     const fetchMembers = async () => {
@@ -22,7 +21,7 @@ function MembersPage() {
           ...doc.data(),
         }));
         setMembers(membersData);
-        setFilteredMembers(membersData); // Initially display all members
+        setFilteredMembers(membersData); 
       } catch (error) {
         console.error("Error fetching members: ", error);
       }
@@ -32,7 +31,7 @@ function MembersPage() {
   }, []);
 
   useEffect(() => {
-    // Filter members whenever selectedClub or selectedRole changes
+
     const filtered = members.filter(member => {
       const matchesClub = selectedClub ? member.FootballClub === selectedClub : true;
       const matchesRole = selectedRole ? member.Role === selectedRole : true;
@@ -55,12 +54,12 @@ function MembersPage() {
   };
 
   const handleShowModal = (member) => {
-    setSelectedMember(member);  // Set the selected member
-    setIsModalOpen(true);       // Open the modal
+    setSelectedMember(member);  
+    setIsModalOpen(true);      
   };
 
   const handleCloseModal = () => {
-    setIsModalOpen(false);      // Close the modal
+    setIsModalOpen(false);      
   };
 
   return (

@@ -1,12 +1,11 @@
 import { useState } from "react";
-import { db } from "../firebaseConfig"; // import your firebase config
+import { db } from "../firebaseConfig";
 import { collection, addDoc } from "firebase/firestore";
 import { useNavigate } from 'react-router-dom';
 
 const AddRoom = () => {
   const navigate = useNavigate();
 
-  // State for form data
   const [RoomName, setRoomName] = useState("");
   const [Type, setRoomType] = useState("");
   const [Status, setRoomStatus] = useState("");
@@ -31,7 +30,7 @@ const AddRoom = () => {
           TitelReservation: "",
         },
       });
-      navigate("/facilities"); // Redirect to facilities page after submission
+      navigate("/facilities"); 
     } catch (error) {
       console.error("Error adding room: ", error);
     }
@@ -40,17 +39,14 @@ const AddRoom = () => {
   return (
     <div className="container-fluid pe-3">
       <div className="row">
-        {/* Left Sidebar */}
         <div className="col-3"></div>
 
-        {/* Main Form Area */}
         <div className="col-6">
           <div className="row justify-content-center mt-4">
             <div className="col-12">
               <div className="card p-4 rounded-3 shadow-sm bg-white">
                 <h1 className="text-center">Tilføj nyt rum</h1>
 
-                {/* Row 1: Room Name and Type */}
                 <div className="row mt-4">
                   <div className="col-6">
                     <div className="input-group">
@@ -84,7 +80,6 @@ const AddRoom = () => {
                   </div>
                 </div>
 
-                {/* Row 2: Room Status */}
                 <div className="row mt-4">
                   <div className="col-6">
                     <select
@@ -99,7 +94,6 @@ const AddRoom = () => {
                   </div>
                 </div>
 
-                {/* Row 3: Room Description */}
                 <div className="row mt-4">
                   <div className="col-12">
                     <textarea
@@ -112,7 +106,6 @@ const AddRoom = () => {
                   </div>
                 </div>
 
-                {/* Row 4: Buttons */}
                 <div className="row mt-3">
                   <div className="col-6">
                     <button
@@ -138,7 +131,6 @@ const AddRoom = () => {
           </div>
         </div>
 
-        {/* Right Sidebar */}
         <div className="col-3"></div>
       </div>
     </div>

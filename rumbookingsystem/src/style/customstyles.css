@@ -20,14 +20,14 @@
     --custom-totalhvid: #FFFFFF;
     --custom-headertekst: #343A40;
     --custom-hvidtekstknap: #FFFFFF; 
-    --custom-primaryCTA: #343A40; /* Example value for primary CTA */
+    --custom-primaryCTA: #343A40; 
 
 
   }
 
   body {
-    background-color: #F5F6FA; /* Replace with your desired color */
-    margin: 0; /* Ensure no extra spacing around the body */
+    background-color: #F5F6FA; 
+    margin: 0;
   }
 
   .text-custom-primary{
@@ -104,36 +104,33 @@
 }
 
 .square {
-  cursor: pointer;  /* Change cursor to pointer on hover */
-  background-color: #f8f9fa;  /* Background color */
-  border: 1px solid #ddd;  /* Border to define the square */
-  border-radius: 5px;  /* Rounded corners */
+  cursor: pointer; 
+  background-color: #f8f9fa; 
+  border: 1px solid #ddd;  
+  border-radius: 5px;
   padding: 20px;
-  transition: all 0.3s ease;  /* Smooth transition for hover effect */
+  transition: all 0.3s ease;  
 }
 
 .square:hover {
-  background-color: #e9ecef;  /* Hover effect */
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);  /* Slight shadow effect on hover */
+  background-color: #e9ecef;  
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); 
 }
 
 .square.disabled {
   background-color: #f1f3f5;
-  cursor: not-allowed;  /* Disable pointer when it's not clickable */
-  color: #6c757d;  /* Greyed-out text for disabled state */
+  cursor: not-allowed; 
+  color: #6c757d;  
 }
 
-/* In your CSS file or in a style block */
 .custom-rounded {
-  border-radius: 15px !important;  /* Adjust the px value to make it more rounded */
+  border-radius: 15px !important;  
 }
 
-/* Hide the dropdown arrow */
 .dropdown-toggle::after {
   display: none !important;
 }
 
-/* Modal i kalenderen */
 
 .calendar-grid {
   display: grid;
@@ -200,7 +197,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 8px; /* Optional for rounded edges */
+  border-radius: 8px;
 }
 
 .roomsrow{
@@ -208,11 +205,11 @@
 }
 
 .text-status-ledigt {
-  color: var(--custom-ledig); /* #28A745 */
+  color: var(--custom-ledig); 
 }
 
 .text-status-optaget {
-  color: var(--custom-optagetdarkred); /* #D91E2F */
+  color: var(--custom-optagetdarkred);
 }
 
 .nav-link {
@@ -259,67 +256,63 @@ ul ul {
   text-align: center;
 }
 
-/* Styles for the modal container */
-/* Styles for the modal overlay */
+
 .modal-overlay2 {
   position: absolute;
   top: 0; 
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.5); /* Grey transparent background */
-  z-index: 1000; /* Ensure it's above other content */
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-/* Styles for modal container inside col-9 */
+
 .modal-container2 {
-  position: relative; /* Relative to col-9 container */
-  width: 40%; /* Full width of the col-9 */
-  height: 100%; /* Full height of the col-9 */
+  position: relative; 
+  width: 40%; 
+  height: 100%; 
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-/* Modal content styles */
 .modal-content2 {
   background: white;
   border-radius: 8px;
-  width: 50%;  /* Modal width */
-  max-width: 500px; /* Max width */
-  position: relative; /* Keeps the close button positioned correctly inside the modal */
+  width: 50%;  
+  max-width: 500px; 
+  position: relative; 
 }
 
-/* Close button inside the modal box */
 .close-button2 {
   background: none;
   border: none;
   font-size: 24px;
   color: #333;
-  position: absolute; /* Absolute position inside the modal */
+  position: absolute; 
   top: 10px;
   right: 10px;
   cursor: pointer;
 }
 
-/* Modal body content */
 .modal-body2 {
   margin-top: 20px;
 }
 
 .btn-hover-custom {
-  background-color: white; /* Default background */
-  color: var(--custom-primaryCTA); /* Default text color */
-  border: 1px solid var(--bs-secondary); /* Default border color */
+  background-color: white; 
+  color: var(--custom-primaryCTA);
+  border: 1px solid var(--bs-secondary);
 }
 
 .btn-hover-custom:hover {
-  background-color: var(--custom-navbartekst); /* Custom background on hover */
-  color: #fdfdfd; /* White text on hover */
-  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
+  background-color: var(--custom-navbartekst);
+  color: #fdfdfd;
+  transition: background-color 0.3s ease, color 0.3s ease; 
 }
 
 

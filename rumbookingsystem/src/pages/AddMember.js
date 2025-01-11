@@ -1,12 +1,12 @@
 import { useState, useRef, useEffect } from "react";
-import { db } from "../firebaseConfig"; // import your firebase config
+import { db } from "../firebaseConfig";
 import { collection, addDoc } from "firebase/firestore";
-import { useNavigate } from 'react-router-dom';  // For navigating back
+import { useNavigate } from 'react-router-dom';
 
 const AddMember = () => {
   const navigate = useNavigate();
 
-  // State for form data
+
   const [Email, setEmail] = useState("");
   const [FirstName, setFirstName] = useState("");
   const [LastName, setLastName] = useState("");
@@ -16,9 +16,8 @@ const AddMember = () => {
   const [RoomAccess, setRoomAccess] = useState([]);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   
-  const dropdownRef = useRef(null); // Reference to the dropdown to handle click outside
+  const dropdownRef = useRef(null);
 
-  // Function to handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -32,29 +31,26 @@ const AddMember = () => {
         Role,
         RoomAccess
       });
-      navigate("/members");  // Redirect to members page after submission
+      navigate("/members");
     } catch (error) {
       console.error("Error adding document: ", error);
     }
   };
 
-  // Function to toggle dropdown visibility
   const toggleDropdown = () => {
     setDropdownOpen(prevState => !prevState);
   };
 
-  // Function to handle room access selection
   const handleRoomAccessChange = (event) => {
     const value = event.target.value;
     setRoomAccess(prevState => {
       if (prevState.includes(value)) {
-        return prevState.filter(room => room !== value); // Remove value if already selected
+        return prevState.filter(room => room !== value);
       }
-      return [...prevState, value]; // Add value if not already selected
+      return [...prevState, value];
     });
   };
 
-  // Close dropdown if clicked outside
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -69,17 +65,14 @@ const AddMember = () => {
   return (
     <div className="container-fluid pe-3">
       <div className="row">
-        {/* Left Sidebar */}
         <div className="col-2"></div>
 
-        {/* Main Form Area */}
         <div className="col-8">
           <div className="row justify-content-center mt-4">
             <div className="col-12">
               <div className="card p-4 rounded-3 shadow-sm bg-white">
                 <h1 className="text-center">Opret nyt medlem</h1>
 
-                {/* Row 1: Fornavn and Efternavn */}
                 <div className="row mt-3">
                   <div className="col-6">
                     <div className="input-group">
@@ -111,7 +104,6 @@ const AddMember = () => {
                   </div>
                 </div>
 
-                {/* Row 2: Email and Phone Number */}
                 <div className="row mt-4">
                   <div className="col-6">
                     <div className="input-group">
@@ -143,7 +135,6 @@ const AddMember = () => {
                   </div>
                 </div>
 
-                {/* Row 3: Football Club */}
                 <div className="row mt-4">
                   <div className="col-6">
                     <select
@@ -160,7 +151,6 @@ const AddMember = () => {
                   </div>
                 </div>
 
-                {/* Row 4: Role and Room Access */}
                 <div className="row mt-4">
                   <div className="col-6">
                     <select
@@ -236,7 +226,6 @@ const AddMember = () => {
                   </div>
                 </div>
 
-                {/* Row 5: Buttons */}
                 <div className="row mt-5">
                   <div className="col-6">
                   <button
@@ -264,7 +253,6 @@ const AddMember = () => {
           </div>
         </div>
 
-        {/* Right Sidebar */}
         <div className="col-2"></div>
       </div>
     </div>

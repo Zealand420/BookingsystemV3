@@ -93,17 +93,14 @@ const EditMember = () => {
   return (
     <div className="container-fluid pe-3">
       <div className="row">
-        {/* Left Sidebar */}
         <div className="col-2"></div>
 
-        {/* Main Form Area */}
         <div className="col-8">
           <div className="row justify-content-center mt-4">
             <div className="col-12">
               <div className="card p-4 rounded-3 shadow-sm bg-white">
                 <h1 className="text-center">Rediger medlem</h1>
 
-                {/* Row 1: Fornavn and Efternavn */}
                 <div className="row mt-3">
                   <div className="col-6">
                     <div className="input-group">
@@ -135,7 +132,6 @@ const EditMember = () => {
                   </div>
                 </div>
 
-                {/* Row 2: Email and Phone Number */}
                 <div className="row mt-3">
                   <div className="col-6">
                     <div className="input-group">
@@ -167,7 +163,6 @@ const EditMember = () => {
                   </div>
                 </div>
 
-                {/* Row 3: Football Club */}
                 <div className="row mt-3">
                   <div className="col-6">
                     <select
@@ -184,7 +179,6 @@ const EditMember = () => {
                   </div>
                 </div>
 
-                {/* Row 4: Role and Room Access */}
                 <div className="row mt-3">
                   <div className="col-6">
                     <select
@@ -260,7 +254,6 @@ const EditMember = () => {
                   </div>
                 </div>
 
-                {/* Row 5: Buttons */}
                 <div className="row mt-3">
                   <div className="col-6">
                     <button
@@ -287,7 +280,6 @@ const EditMember = () => {
           </div>
         </div>
 
-        {/* Right Sidebar */}
         <div className="col-2"></div>
       </div>
     </div>

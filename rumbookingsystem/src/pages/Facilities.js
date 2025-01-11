@@ -1,19 +1,18 @@
 import { collection, getDocs, deleteDoc, doc } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { db } from "../firebaseConfig";
-import { Link } from "react-router-dom"; // Import Link for navigation
-import AdminVerticalNavbar from "../components/AdminVerticalNavbar"; // Adjust the path as necessary
-import FacilityDetailsModal from "../components/FacilityDetailsModal"; // Import the modal component
+import { Link } from "react-router-dom";
+import AdminVerticalNavbar from "../components/AdminVerticalNavbar";
+import FacilityDetailsModal from "../components/FacilityDetailsModal";
 
 function FacilitiesPage() {
   const [facilities, setFacilities] = useState([]);
-  const [filteredFacilities, setFilteredFacilities] = useState([]); // State for filtered facilities
-  const [selectedStatus, setSelectedStatus] = useState(""); // Filter for status
-  const [selectedType, setSelectedType] = useState(""); // Filter for type
-  const [selectedFacility, setSelectedFacility] = useState(null); // State for selected facility
-  const [isModalOpen, setIsModalOpen] = useState(false); // State to control modal visibility
+  const [filteredFacilities, setFilteredFacilities] = useState([]);
+  const [selectedStatus, setSelectedStatus] = useState("");
+  const [selectedType, setSelectedType] = useState("");
+  const [selectedFacility, setSelectedFacility] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // Fetching facilities data from Firestore
   useEffect(() => {
     const fetchFacilities = async () => {
       try {
@@ -23,7 +22,7 @@ function FacilitiesPage() {
           ...doc.data(),
         }));
         setFacilities(facilitiesData);
-        setFilteredFacilities(facilitiesData); // Initially show all facilities
+        setFilteredFacilities(facilitiesData); 
       } catch (error) {
         console.error("Error fetching facilities: ", error);
       }
@@ -32,7 +31,7 @@ function FacilitiesPage() {
     fetchFacilities();
   }, []);
 
-  // Apply filtering whenever the status or type filter is changed
+ 
   useEffect(() => {
     const filtered = facilities.filter((facility) => {
       const matchesStatus = selectedStatus ? facility.Status === selectedStatus : true;
@@ -42,25 +41,20 @@ function FacilitiesPage() {
     setFilteredFacilities(filtered);
   }, [selectedStatus, selectedType, facilities]);
 
-  // Handle modal opening
   const handleShowModal = (facility) => {
-    setSelectedFacility(facility); // Set the selected facility
-    setIsModalOpen(true); // Open the modal
+    setSelectedFacility(facility); 
+    setIsModalOpen(true);
   };
 
-  // Handle modal closing
+ 
   const handleCloseModal = () => {
-    setIsModalOpen(false); // Close the modal
+    setIsModalOpen(false);
   };
 
-  // Handle facility deletion
   const handleDelete = async (id) => {
-    // Confirm deletion before proceeding
     if (window.confirm("Er du sikker på, at du vil slette dette lokale?")) {
       try {
-        // Delete the facility from Firestore
         await deleteDoc(doc(db, "Facilities", id));
-        // Update the facilities state to remove the deleted facility
         setFacilities((prevFacilities) =>
           prevFacilities.filter((facility) => facility.id !== id)
         );
@@ -75,13 +69,11 @@ function FacilitiesPage() {
   return (
     <div className="container-fluid pe-3">
       <div className="row">
-        {/* Vertical Navbar */}
         <div className="col-3 bg-light border-end" style={{ minHeight: "100vh" }}>
           <AdminVerticalNavbar userId="USER_ID_HERE" />
         </div>
 
         <div className="col-9">
-          {/* Header */}
           <div className="row align-items-center py-3 ms-2">
             <div className="col-6">
               <h1>Faciliteter</h1>
@@ -91,7 +83,6 @@ function FacilitiesPage() {
             </div>
           </div>
 
-          {/* Filters Row */}
           <div className="row align-items-center py-3 ms-2 me-2">
             <div className="col-4 d-flex align-items-center">
               <div className="input-group">
@@ -108,7 +99,6 @@ function FacilitiesPage() {
             <div className="col-8 d-flex justify-content-end align-items-center">
               <span className="me-3 fw-bold text-custom-H3">Sorter efter:</span>
 
-              {/* Filter by Status */}
               <select
                 className="form-select me-3 custom-rounded fw-bold text-custom-primaryCTA pt-3 pb-3 pe-3 ps-3"
                 style={{ width: "150px" }}
@@ -120,7 +110,6 @@ function FacilitiesPage() {
                 <option value="Optaget">Optaget</option>
               </select>
 
-              {/* Filter by Type */}
               <select
                 className="form-select me-3 custom-rounded fw-bold text-custom-primaryCTA pt-3 pb-3 pe-3 ps-3"
                 style={{ width: "150px" }}
@@ -135,7 +124,6 @@ function FacilitiesPage() {
                 <option value="Køkken">Køkken</option>
               </select>
 
-              {/* Add new facility button */}
               <Link to="/add-room">
                 <button className="btn btn-primary fw-bold custom-rounded text-custom-primaryCTAhvid pt-3 pb-3 pe-3 ps-3">
                   <i className="fas fa-plus me-2"></i>Tilføj nyt lokale
@@ -144,7 +132,6 @@ function FacilitiesPage() {
             </div>
           </div>
 
-          {/* Table Header */}
           <div className="row py-3 border-bottom bg-white rounded-top ms-3 me-3">
             <div className="col-4">
               <strong className="text-custom-headertekst">Navn</strong>
@@ -160,7 +147,6 @@ function FacilitiesPage() {
             </div>
           </div>
 
-          {/* Display filtered facilities */}
           {filteredFacilities.map((facility) => (
             <div
               className="row py-2 border-bottom bg-white ms-3 me-3"

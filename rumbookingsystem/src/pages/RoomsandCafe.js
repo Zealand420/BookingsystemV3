@@ -1,23 +1,31 @@
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, query, where } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { db } from "../firebaseConfig";
-import UserVerticalNavbar from "../components/UserVerticalNavbar"; // Adjust the path as necessary
-
+import UserVerticalNavbar from "../components/UserVerticalNavbar";
 
 function RoomsAndCafePage() {
   const [facilities, setFacilities] = useState([]);
+  const [filteredFacilities, setFilteredFacilities] = useState([]);
+  const [statusFilter, setStatusFilter] = useState("All");
+  const [typeFilter, setTypeFilter] = useState("All");
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchFacilities = async () => {
       try {
-        const querySnapshot = await getDocs(collection(db, "Facilities"));
+        const facilitiesQuery = query(
+          collection(db, "Facilities"),
+          where("Type", "in", ["Mødelokale", "Taktiklokale", "Cafe"])
+        );
+
+        const querySnapshot = await getDocs(facilitiesQuery);
         const facilitiesData = querySnapshot.docs.map((doc) => ({
           id: doc.id,
           ...doc.data(),
         }));
         setFacilities(facilitiesData);
+        setFilteredFacilities(facilitiesData); 
       } catch (error) {
         console.error("Error fetching facilities: ", error);
       }
@@ -26,20 +34,32 @@ function RoomsAndCafePage() {
     fetchFacilities();
   }, []);
 
+  useEffect(() => {
+    let filtered = facilities;
+
+    if (statusFilter !== "All") {
+      filtered = filtered.filter((facility) => facility.Status === statusFilter);
+    }
+
+    if (typeFilter !== "All") {
+      filtered = filtered.filter((facility) => facility.Type === typeFilter);
+    }
+
+    setFilteredFacilities(filtered);
+  }, [statusFilter, typeFilter, facilities]);
+
   const handleReserveClick = (roomId) => {
-    navigate(`/calendar/${roomId}`); // Navigate to calendar page with the selected room ID
+    navigate(`/calendar/${roomId}`); 
   };
 
   return (
     <div className="container-fluid pe-3">
       <div className="row">
-        {/* Vertical Navbar */}
         <div className="col-3 bg-light border-end" style={{ minHeight: "100vh" }}>
-        <UserVerticalNavbar userId="USER_ID_HERE" />
+          <UserVerticalNavbar userId="USER_ID_HERE" />
         </div>
 
         <div className="col-9">
-          {/* Row 1: Header and Search */}
           <div className="row align-items-center py-3 ms-2">
             <div className="col-8">
               <h1>Lokaler & cafe</h1>
@@ -59,7 +79,6 @@ function RoomsAndCafePage() {
             </div>
           </div>
 
-          {/* Row 2: Filters */}
           <div className="row align-items-center py-3 ms-2 me-2">
             <div className="col-5"></div>
             <div className="col-7 d-flex justify-content-end align-items-center">
@@ -67,71 +86,69 @@ function RoomsAndCafePage() {
               <select
                 className="form-select me-3 custom-rounded fw-bold pt-3 pb-3"
                 style={{ width: "150px" }}
+                value={statusFilter}
+                onChange={(e) => setStatusFilter(e.target.value)}
               >
-                <option>Status</option>
-                <option>Ledig</option>
-                <option>Optaget</option>
+                <option value="All">Status</option>
+                <option value="Ledig">Ledig</option>
+                <option value="Optaget">Optaget</option>
               </select>
               <select
                 className="form-select custom-rounded fw-bold pt-3 pb-3"
                 style={{ width: "150px" }}
+                value={typeFilter}
+                onChange={(e) => setTypeFilter(e.target.value)}
               >
-                <option>Type</option>
-                <option>Mødelokale</option>
-                <option>Taktiklokale</option>
-                <option>Cafe</option>
+                <option value="All">Type</option>
+                <option value="Mødelokale">Mødelokale</option>
+                <option value="Taktiklokale">Taktiklokale</option>
+                <option value="Cafe">Cafe</option>
               </select>
             </div>
           </div>
 
-          {/* Dynamic Rows for Facilities */}
-          {facilities.map((facility) => (
+          {filteredFacilities.map((facility) => (
             <div
-            className="row py-3 border-bottom bg-white custom-rounded ms-3 me-3 mt-3"
-            key={facility.id}>
-            <div className="col-3">
-              <img
-                src="/images/kontorfodbold.jpg"
-                alt={facility.RoomName}
-                className="full-container-image"
-              />
-            </div>
-          
-            <div className="col-6 d-flex flex-column justify-content-between" style={{ minHeight: "150px" }}>
-              {/* Room Name and Description */}
-              <div>
-                <h2 className="text-custom-H2 fw-bold">{facility.RoomName}</h2>
-                <p className="mb-2 text-custom-primary">{facility.Description}</p>
-              </div>
-              
-              {/* Status */}
-              <div>
-                <p className="statusoversigt text-custom-primary fw-bold">
-                  <strong>Status:</strong>
-                  <span
-                    className={`ms-2 ${
-                      facility.Status === "Ledig" ? "text-status-ledigt" : "text-status-optaget"
-                    }`}
-                  >
-                    {facility.Status}
-                  </span>
-                </p>
+              className="row py-3 border-bottom bg-white custom-rounded ms-3 me-3 mt-3"
+              key={facility.id}
+            >
+              <div className="col-3">
+                <img
+                  src="/images/kontorfodbold.jpg"
+                  alt={facility.RoomName}
+                  className="full-container-image"
+                />
               </div>
 
-            </div>
-          
-            <div className="col-3 d-flex justify-content-end align-self-end">
-              <button
-                className="btn btn-primary custom-rounded pe-5 ps-5 pt-3 pb-3 text-custom-primaryCTAhvidstor fw-bold"
-                onClick={() => handleReserveClick(facility.id)} // Navigate with roomId
-              >
-                <i className="fas fa-calendar me-2 me-3"></i>Reserver
-              </button>
-            </div>
-          </div>
-          
+              <div className="col-6 d-flex flex-column justify-content-between" style={{ minHeight: "150px" }}>
+                <div>
+                  <h2 className="text-custom-H2 fw-bold">{facility.RoomName}</h2>
+                  <p className="mb-2 text-custom-primary">{facility.Description}</p>
+                </div>
 
-            
+                <div>
+                  <p className="statusoversigt text-custom-primary fw-bold">
+                    <strong>Status:</strong>
+                    <span
+                      className={`ms-2 ${
+                        facility.Status === "Ledig" ? "text-status-ledigt" : "text-status-optaget"
+                      }`}
+                    >
+                      {facility.Status}
+                    </span>
+                  </p>
+                </div>
+              </div>
+
+              <div className="col-3 d-flex justify-content-end align-self-end">
+                <button
+                  className="btn btn-primary custom-rounded pe-5 ps-5 pt-3 pb-3 text-custom-primaryCTAhvidstor fw-bold"
+                  onClick={() => handleReserveClick(facility.id)} 
+                >
+                  <i className="fas fa-calendar me-2 me-3"></i>Reserver
+                </button>
+              </div>
+            </div>
           ))}
         </div>
       </div>
@@ -140,5 +157,7 @@ function RoomsAndCafePage() {
 }
 
 export default RoomsAndCafePage;
+
+
 
 

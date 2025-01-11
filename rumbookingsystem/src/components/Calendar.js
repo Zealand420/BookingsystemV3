@@ -8,10 +8,9 @@ function Calendar() {
 
   const [currentWeek, setCurrentWeek] = useState([]);
   const [reservations, setReservations] = useState([]);
-  const [roomName, setRoomName] = useState(""); // State to store room name
+  const [roomName, setRoomName] = useState(""); 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // Modal Form States
   const [TitelReservation, setTitelReservation] = useState("");
   const [StartTime, setStartTime] = useState("");
   const [EndTime, setEndTime] = useState("");
@@ -27,7 +26,7 @@ function Calendar() {
     try {
       const roomDoc = await getDoc(doc(db, "Facilities", roomId));
       if (roomDoc.exists()) {
-        setRoomName(roomDoc.data().RoomName); // Set room name
+        setRoomName(roomDoc.data().RoomName); 
       } else {
         console.error("Room not found");
       }
@@ -60,7 +59,7 @@ function Calendar() {
     });
     setCurrentWeek(week);
     fetchReservations();
-    fetchRoomDetails(); // Fetch room details on mount
+    fetchRoomDetails(); 
   }, [roomId]);
 
   const changeWeek = (direction) => {

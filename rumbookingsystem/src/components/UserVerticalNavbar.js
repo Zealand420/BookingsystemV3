@@ -24,7 +24,6 @@ function UserVerticalNavbar({ userId }) {
 
   return (
     <div className="col-12 bg-light sticky-top" style={{ minHeight: "100vh" }}>
-      {/* User Icon and Welcome */}
       <div className="text-center py-4">
         <div className="rounded-circle d-inline-block usericon">
           <i className="fas fa-user"></i>
@@ -34,10 +33,8 @@ function UserVerticalNavbar({ userId }) {
         </p>
       </div>
 
-      {/* Navigation */}
       <nav>
         <ul className="list-unstyled ms-5 text-custom-navbar fw-bold">
-          {/* Navigation Item: Lokaler & Cafe */}
           <li>
             <Link
               to="/rooms-and-cafe"
@@ -48,7 +45,6 @@ function UserVerticalNavbar({ userId }) {
             </Link>
           </li>
 
-          {/* Navigation Item: Omklædningsrum */}
           <li>
             <Link
               to="/changing-room"
@@ -59,7 +55,6 @@ function UserVerticalNavbar({ userId }) {
             </Link>
           </li>
 
-          {/* Navigation Item: Fitnessrum */}
           <li>
             <Link
               to="/fitness-room"
@@ -70,7 +65,6 @@ function UserVerticalNavbar({ userId }) {
             </Link>
           </li>
 
-          {/* Navigation Item: Køkken */}
           <li>
             <Link
               to="/kitchen"
@@ -81,7 +75,6 @@ function UserVerticalNavbar({ userId }) {
             </Link>
           </li>
 
-          {/* Navigation Item: Admin */}
           <li className="position-relative">
             <a
               href="#!"
@@ -94,7 +87,6 @@ function UserVerticalNavbar({ userId }) {
             </a>
             <div className="collapse" id="dropdown-admin">
               <ul className="list-unstyled ps-4">
-                {/* Dropdown Item: Medlemmer */}
                 <li>
                   <Link
                     to="/members"
@@ -105,7 +97,6 @@ function UserVerticalNavbar({ userId }) {
                   </Link>
                 </li>
 
-                {/* Dropdown Item: Faciliteter */}
                 <li>
                   <Link
                     to="/facilities"
@@ -116,7 +107,6 @@ function UserVerticalNavbar({ userId }) {
                   </Link>
                 </li>
 
-                {/* Dropdown Item: Alle Reservationer */}
                 <li>
                   <Link
                     to=""

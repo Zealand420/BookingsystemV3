@@ -10,7 +10,7 @@ function EditFacilityPage() {
   const [RoomName, setRoomName] = useState("");
   const [Status, setStatus] = useState("");
   const [Type, setType] = useState("");
-  const [Description, setDescription] = useState(""); // Added Description state
+  const [Description, setDescription] = useState("");
 
   useEffect(() => {
     const fetchFacilityData = async () => {
@@ -23,7 +23,7 @@ function EditFacilityPage() {
           setRoomName(data.RoomName || "");
           setStatus(data.Status || "");
           setType(data.Type || "");
-          setDescription(data.Description || ""); // Set Description
+          setDescription(data.Description || "");
         } else {
           console.error("Facility not found!");
           navigate("/facilities");
@@ -44,7 +44,7 @@ function EditFacilityPage() {
         RoomName,
         Status,
         Type,
-        Description, // Include Description in the update
+        Description,
       });
       navigate("/facilities");
     } catch (error) {
@@ -62,7 +62,6 @@ function EditFacilityPage() {
               <div className="card p-4 rounded-3 shadow-sm bg-white">
                 <h1 className="text-center">Rediger lokale</h1>
 
-                {/* Row 1: Room Name */}
                 <div className="row mt-3">
                   <div className="col-6">
                     <div className="input-group">
@@ -94,7 +93,6 @@ function EditFacilityPage() {
                   </div>
                 </div>
 
-                {/* Row 2: Status */}
                 <div className="row mt-3">
                   <div className="col-6">
                     <select
@@ -108,7 +106,6 @@ function EditFacilityPage() {
                   </div>
                 </div>
 
-                {/* Row 3: Description */}
                 <div className="row mt-3">
                   <div className="col-12">
                     <div className="input-group">
@@ -126,7 +123,6 @@ function EditFacilityPage() {
                   </div>
                 </div>
 
-                {/* Row 5: Buttons */}
                 <div className="row mt-3">
                   <div className="col-6">
                     <button

@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 const OverviewAdmin = () => {
   return (
     <div className="container my-4">
-      {/* Row 1 */}
       <div className="row">
         <div className="col text-center">
           <h1 class="fw-bold text-custom-H1 mt-5" >Hej Admin!</h1>
@@ -12,12 +11,9 @@ const OverviewAdmin = () => {
         </div>
       </div>
 
-      {/* Row 2 */}
       <div className="row mt-2">
-        {/* Sidebar Left */}
         <div className="col-2"></div>
 
-        {/* Column 2 to 4: 3 Squares */}
         <Link to="/members" className="col-2 text-center square ms-2 me-2" style={{ textDecoration: 'none' }}>
           <i className="fas fa-users fa-3x mt-3 text-secondary"></i>
           <h5 className='text-custom-navbar mt-1'>Medlemmer</h5>
@@ -31,26 +27,20 @@ const OverviewAdmin = () => {
           <h5 className='text-custom-navbar mt-1'>Alle Reservationer</h5>
         </div>
 
-        {/* Empty Column 5 */}
         <div className="col-2"></div>
 
-        {/* Sidebar Right */}
         <div className="col-2"></div>
       </div>
 
-      {/* Row 3 */}
       <div className="row">
         <div className="col text-center">
           <h3 class="mt-4 text-custom-H3">Eller vil du gerne booke et rum?</h3>
         </div>
       </div>
 
-      {/* Row 4 */}
       <div className="row mt-2">
-        {/* Sidebar Left */}
         <div className="col-2"></div>
 
-        {/* Column 2 to 5: 4 Squares */}
         <Link to="/rooms-and-cafe" className="col-2 text-center square ms-2 me-2" style={{ textDecoration: 'none' }}>
           <i className="fa-solid fa-person-shelter fa-3x text-secondary mt-3"></i>
           <h5 className='text-custom-navbar mt-1'>Lokaler & Cafe</h5>
@@ -68,7 +58,6 @@ const OverviewAdmin = () => {
           <h5 className='text-custom-navbar mt-1'>Køkken</h5>
         </Link>
 
-        {/* Sidebar Right */}
         <div className="col-2"></div>
       </div>
     </div>
