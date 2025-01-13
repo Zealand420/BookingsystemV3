@@ -126,7 +126,8 @@ function EditFacilityPage() {
                 <div className="row mt-3">
                   <div className="col-6">
                     <button
-                      className="btn btn-secondary border border-secondary btn-hover-custom pt-3 pb-3 pe-3 ps-3 fw-bold float-end"
+                      className="btn btn-secondary border border-secondary 
+                      btn-hover-custom pt-3 pb-3 pe-3 ps-3 fw-bold float-end"
                       style={{ width: "50%" }}
                       onClick={() => navigate("/facilities")}
                     >

@@ -4,6 +4,7 @@ import { db } from "../firebaseConfig";
 import { Link } from 'react-router-dom';
 import AdminVerticalNavbar from "../components/AdminVerticalNavbar";
 import MemberDetailsModal from "../components/MemberDetailsModal"; 
+
 function MembersPage() {
   const [members, setMembers] = useState([]);
   const [filteredMembers, setFilteredMembers] = useState([]);

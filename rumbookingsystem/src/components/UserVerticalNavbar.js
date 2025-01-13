@@ -23,7 +23,7 @@ function UserVerticalNavbar({ userId }) {
   }, [userId]);
 
   return (
-    <div className="col-12 bg-light sticky-top" style={{ minHeight: "100vh" }}>
+    <div className="col-12 bg-light sticky-top bg-white" style={{ minHeight: "100vh" }}>
       <div className="text-center py-4">
         <div className="rounded-circle d-inline-block usericon">
           <i className="fas fa-user"></i>

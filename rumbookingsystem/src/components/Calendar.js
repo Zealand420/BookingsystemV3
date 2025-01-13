@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { db } from "../firebaseConfig";
 import { doc, getDoc, collection, addDoc, getDocs, query } from "firebase/firestore";
 import { useParams } from "react-router-dom";
+import UserVerticalNavbar from "../components/UserVerticalNavbar";
 
 function Calendar() {
   const { roomId } = useParams();
@@ -110,7 +111,10 @@ function Calendar() {
   return (
     <div className="container-fluid pe-3">
       <div className="row">
-        <div className="col-3 bg-light border-end" style={{ minHeight: "100vh" }}></div>
+        <div className="col-3 bg-light border-end" style={{ minHeight: "100vh" }}>
+        <UserVerticalNavbar userId="USER_ID_HERE" />
+
+        </div>
         <div className="col-9">
           <div className="row align-items-center py-3 ms-2">
             <div className="col-6">

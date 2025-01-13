@@ -243,7 +243,7 @@ const AddMember = () => {
                       style={{ width: "50%" }}
                       onClick={handleSubmit}
                     >
-                      Opret Bruger
+                      Opret medlem
                     </button>
                   </div>
                 </div>

@@ -24,7 +24,6 @@ function AdminVerticalNavbar({ userId }) {
 
   return (
     <div className="col-12 bg-light sticky-top" style={{ minHeight: "100vh" }}>
-      {/* User Icon and Welcome */}
       <div className="text-center py-4">
         <div
           className="rounded-circle d-inline-block usericon">
@@ -35,10 +34,8 @@ function AdminVerticalNavbar({ userId }) {
         </p>
       </div>
 
-      {/* Navigation */}
       <nav>
         <ul className="list-unstyled ms-5 text-custom-navbar fw-bold">
-          {/* Navigation Item: Medlemmer */}
           <li>
             <Link
               to="/members"
@@ -49,7 +46,6 @@ function AdminVerticalNavbar({ userId }) {
             </Link>
           </li>
 
-          {/* Navigation Item: Faciliteter */}
           <li>
             <Link
               to="/facilities"
@@ -60,7 +56,6 @@ function AdminVerticalNavbar({ userId }) {
             </Link>
           </li>
 
-          {/* Navigation Item: Alle Reservationer */}
           <li>
             <Link
               to=""
@@ -69,7 +64,6 @@ function AdminVerticalNavbar({ userId }) {
             </Link>
           </li>
 
-          {/* Navigation Item: Reserver Rum */}
           <li className="position-relative">
             <a
               href="#!"
